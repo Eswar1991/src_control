@@ -53,8 +53,8 @@ sigma1 = S1(1:1);
 %amp = norm(A)/normE;
 
 sigNoiseRatio = [200 180 160 140 120 100 80 60 40 20 0];
-Doc_leftEV = zeros(size(U,2),size(sigNoiseRatio,2),numCopies);
-Doc_leftEV_true = zeros(size(U,2),size(sigNoiseRatio,2),numCopies);
+Doc_rightEV = zeros(size(U,2),size(sigNoiseRatio,2),numCopies);
+Doc_rightEV_true = zeros(size(U,2),size(sigNoiseRatio,2),numCopies);
 % S3 = RandStream.create('mt19937ar','NumStreams',1,'StreamIndices',1);
 % RandStream.setGlobalStream(S3);
 for counter_copies = 1 : 1 :numCopies
@@ -91,8 +91,8 @@ for counter_copies = 1 : 1 :numCopies
 		for i = 1:iOrder
 			%
 			j = i + 1;
-			x = xvec(:,i);% left
-			y = yvec(:,i);% left
+			x = xvec(:,i);% right
+			y = yvec(:,i);% right
 			gamma = gammavec(i);
 			%
 			temp = gamma^2*eye(size(S2)) - S2*S2;
@@ -115,8 +115,8 @@ for counter_copies = 1 : 1 :numCopies
 		
 
 		
-		Doc_leftEV(:,counter,counter_copies) = uvec(:,2); %Since A=A' we are using uvec instead of v.
-        Doc_leftEV_true(:,counter,counter_copies) = Utrue(:,1); %First column of U here is the first left eigen vector of the untransposed row-augmented matrix
+		Doc_rightEV(:,counter,counter_copies) = uvec(:,2); %Since A=A' we are using uvec instead of v.
+        Doc_rightEV_true(:,counter,counter_copies) = Utrue(:,1); %First column of U here is the first right eigen vector of the untransposed row-augmented matrix
 		
 	end
 end
